@@ -6,6 +6,8 @@ class Food
 public:
     Food();
     void Draw();
+    Vector2 GetPosition();
+    void GetNewPosition();
 
 private:
     Vector2 position;

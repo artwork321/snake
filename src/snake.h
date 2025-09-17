@@ -1,19 +1,18 @@
 #pragma once
-#include <vector>
 #include "raylib.h"
+#include <deque>
 
 class Snake
 {
 public:
     Snake();
-    void IncreaseBody();
     void Move();
     void Draw();
-    void Eat();
+    bool Eat(Vector2 foodPos);
+    void Grow();
 
 private:
-    std::vector<Vector2> bodies;
-    Vector2 turningPoint;
+    std::deque<Vector2> bodies;
     Vector2 direction;
-    Vector2 previousDirection;
+    int frameCounter;
 };

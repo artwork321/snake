@@ -16,13 +16,19 @@ int main()
     while (WindowShouldClose() == false)
     {
         BeginDrawing();
-
         ClearBackground(green);
 
         food.Draw();
 
         snake.Move();
+        if (snake.Eat(food.GetPosition()))
+        {
+            food.GetNewPosition();
+        }
+
+        snake.Grow();
         snake.Draw();
+
         EndDrawing();
     }
 
