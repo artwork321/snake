@@ -12,18 +12,20 @@ int main()
     SetTargetFPS(60);
 
     Game game = Game();
-    // Food food = Food();
 
     while (WindowShouldClose() == false)
     {
         BeginDrawing();
 
-        // food.Draw();
         game.Update();
         game.IsGameOver();
 
+        // Drawing
         ClearBackground(green);
+        DrawRectangleLinesEx(Rectangle{cellSize, cellSize, cellSize * (cellCount - 2), cellSize * heightScreen}, 4, darkGreen);
         game.Draw();
+        DrawText("Retro Snake", cellSize, heightScreen * (cellSize + 2), 40, darkGreen);
+        DrawText(TextFormat("Score: %i", game.GetScore()), cellSize, heightScreen * (cellSize + 5), 30, darkGreen);
         EndDrawing();
     }
 

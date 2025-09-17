@@ -12,11 +12,11 @@ public:
     void Grow();
     Vector2 GetHead();
     void Reset();
-    bool CheckCollision();
+    bool CheckCollision() const;
     bool IsElementInDeque(Vector2 elements);
 
 private:
     std::deque<Vector2> bodies;
-    Vector2 direction;
-    int frameCounter;
+    Vector2 direction{};
+    int frameCounter{};
 };

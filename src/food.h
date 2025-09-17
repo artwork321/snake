@@ -7,10 +7,10 @@ public:
     Food();
     ~Food();
     void Draw();
-    Vector2 GetPosition();
+    Vector2 GetPosition() const;
     void GetNewPosition();
 
 private:
-    Vector2 position;
-    Texture2D texture;
+    Vector2 position{};
+    Texture2D texture{};
 };

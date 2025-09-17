@@ -6,13 +6,18 @@ class Game
 {
 public:
     Game();
+    ~Game();
     void Draw();
     void Update();
-    bool CheckCollision();
     void Reset();
+    bool CheckCollision();
     void IsGameOver();
+    int GetScore() const;
 
 private:
-    Snake snake;
-    Food food;
+    Snake snake{};
+    Food food{};
+    int score{};
+    Sound eatSound{};
+    Sound wallSound{};
 };

@@ -4,8 +4,7 @@
 
 Food::Food()
 {
-    position = Vector2{
-        static_cast<float>(GetRandomValue(0, cellSize - 2)), static_cast<float>(GetRandomValue(0, cellCount - 2))};
+    GetNewPosition();
 
     Image image = LoadImage("graphics/food.png");
     texture = LoadTextureFromImage(image);
@@ -22,7 +21,7 @@ void Food::Draw()
     DrawTexture(texture, position.x * cellSize, position.y * cellSize, WHITE);
 }
 
-Vector2 Food::GetPosition()
+Vector2 Food::GetPosition() const
 {
     return position;
 }
@@ -30,5 +29,5 @@ Vector2 Food::GetPosition()
 void Food::GetNewPosition()
 {
     position = Vector2{
-        static_cast<float>(GetRandomValue(0, cellSize - 2)), static_cast<float>(GetRandomValue(0, cellCount - 2))};
+        static_cast<float>(GetRandomValue(1, cellCount - 2)), static_cast<float>(GetRandomValue(1, heightScreen - 1))};
 }
