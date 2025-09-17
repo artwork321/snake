@@ -1,27 +1,31 @@
+#include <iostream>
 #include <raylib.h>
-#include "ball.h"
+#include "constants.h"
+#include "food.h"
+#include "snake.h"
 
 int main()
 {
-    const Color darkGreen = {20, 160, 133, 255};
-
-    constexpr int screenWidth = 800;
-    constexpr int screenHeight = 600;
-
-    Ball ball;
-
-    InitWindow(screenWidth, screenHeight, "My first RAYLIB program!");
+    std::cout << "Starting the game...\n";
+    InitWindow(cellSize * cellCount, cellSize * cellCount, "Retro Snake");
     SetTargetFPS(60);
 
-    while (!WindowShouldClose())
-    {
-        ball.Update();
+    Food food = Food();
+    Snake snake = Snake();
 
+    while (WindowShouldClose() == false)
+    {
         BeginDrawing();
-        ClearBackground(darkGreen);
-        ball.Draw();
+
+        ClearBackground(green);
+
+        food.Draw();
+
+        snake.Move();
+        snake.Draw();
         EndDrawing();
     }
 
     CloseWindow();
+    return 0;
 }
