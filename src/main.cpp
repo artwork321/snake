@@ -33,7 +33,7 @@ int main()
         snake.Draw();
 
         // Check for colision
-        if (CheckCollision(snake))
+        if (snake.CheckCollision())
             Reset(snake, food);
 
         EndDrawing();
@@ -41,11 +41,6 @@ int main()
 
     CloseWindow();
     return 0;
-}
-
-bool CheckCollision(Snake &snake)
-{
-    return (snake.GetHead().x >= cellCount) || (snake.GetHead().y >= cellCount) || (snake.GetHead().x <= 0) || (snake.GetHead().y <= 0);
 }
 
 void Reset(Snake &snake, Food &food)

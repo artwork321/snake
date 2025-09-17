@@ -12,6 +12,8 @@ public:
     void Grow();
     Vector2 GetHead();
     void Reset();
+    bool CheckCollision();
+    bool IsElementInDeque(Vector2 elements);
 
 private:
     std::deque<Vector2> bodies;

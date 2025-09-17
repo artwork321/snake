@@ -73,6 +73,27 @@ Vector2 Snake::GetHead()
     return bodies[0];
 }
 
+bool Snake::CheckCollision()
+{
+    if (GetHead().x >= cellCount || (GetHead().y >= cellCount) || (GetHead().x <= 0) || (GetHead().y <= 0))
+        return true;
+    if (IsElementInDeque(bodies[0]))
+        return true;
+
+    return false;
+}
+
+bool Snake::IsElementInDeque(Vector2 element)
+{
+    for (unsigned int i = 1; i < bodies.size(); ++i)
+    {
+        if (Vector2Equals(bodies[i], element))
+            return true;
+    }
+
+    return false;
+}
+
 void Snake::Reset()
 {
     bodies = {Vector2{6, 9}};
