@@ -7,7 +7,7 @@ Food::Food()
     position = Vector2{
         static_cast<float>(GetRandomValue(0, cellSize - 2)), static_cast<float>(GetRandomValue(0, cellCount - 2))};
 
-    Image image = LoadImage("Graphics/food.png");
+    Image image = LoadImage("graphics/food.png");
     texture = LoadTextureFromImage(image);
     UnloadImage(image);
 }
