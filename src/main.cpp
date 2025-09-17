@@ -15,18 +15,46 @@ int main()
 
     while (WindowShouldClose() == false)
     {
-        BeginDrawing();
+        switch (game.currentState)
+        {
+        case (PLAYING): // Playing Screen
+            BeginDrawing();
 
-        game.Update();
-        game.IsGameOver();
+            game.Update();
 
-        // Drawing
-        ClearBackground(green);
-        DrawRectangleLinesEx(Rectangle{cellSize, cellSize, cellSize * (cellCount - 2), cellSize * heightScreen}, 4, darkGreen);
-        game.Draw();
-        DrawText("Retro Snake", cellSize, heightScreen * (cellSize + 2), 40, darkGreen);
-        DrawText(TextFormat("Score: %i", game.GetScore()), cellSize, heightScreen * (cellSize + 5), 30, darkGreen);
-        EndDrawing();
+            if (game.IsGameOver())
+            {
+                break;
+            }
+
+            // Drawing
+            ClearBackground(green);
+            DrawRectangleLinesEx(Rectangle{cellSize, cellSize, cellSize * (cellCount - 2), cellSize * heightScreen}, 4, darkGreen);
+            game.Draw();
+            DrawText("Retro Snake", cellSize, heightScreen * (cellSize + 2), 40, darkGreen);
+            DrawText(TextFormat("Score: %i", game.GetScore()), cellSize, heightScreen * (cellSize + 5), 30, darkGreen);
+            EndDrawing();
+            break;
+        case (GAME_OVER): // End Game Screen
+            BeginDrawing();
+            ClearBackground(green);
+
+            // Display Text
+            DrawText("Game Over!", GetScreenWidth() / 2 - MeasureText("Game Over!", 50) / 2,
+                     GetScreenHeight() / 2 - 100, 50, darkGreen);
+            DrawText("Press Enter to Restart", GetScreenWidth() / 2 - MeasureText("Press Enter to Restart", 20) / 2,
+                     GetScreenHeight() / 2 - 20 / 2, 20, darkGreen);
+
+            // Process Input
+            if (IsKeyPressed(KEY_ENTER))
+            {
+                game.Reset();
+                game.currentState = PLAYING;
+            }
+
+            EndDrawing();
+            break;
+        }
     }
 
     CloseWindow();

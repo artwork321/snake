@@ -1,17 +1,19 @@
 #pragma once
 #include "snake.h"
 #include "food.h"
+#include "constants.h"
 
 class Game
 {
 public:
     Game();
     ~Game();
+    GameScreen currentState{};
     void Draw();
     void Update();
     void Reset();
     bool CheckCollision();
-    void IsGameOver();
+    bool IsGameOver();
     int GetScore() const;
 
 private:

@@ -4,6 +4,7 @@
 Game::Game()
     : snake(), food()
 {
+    currentState = PLAYING;
     score = 0;
     InitAudioDevice();
     eatSound = LoadSound("sounds/eat.mp3");
@@ -36,14 +37,17 @@ void Game::Update()
     snake.Grow();
 }
 
-void Game::IsGameOver()
+bool Game::IsGameOver()
 {
     // Check for colision
     if (CheckCollision())
     {
         PlaySound(wallSound);
-        Reset();
+        currentState = GAME_OVER;
+        return true;
     }
+
+    return false;
 }
 
 void Game::Reset()
