@@ -5,6 +5,7 @@ class Food
 {
 public:
     Food();
+    ~Food();
     void Draw();
     Vector2 GetPosition();
     void GetNewPosition();

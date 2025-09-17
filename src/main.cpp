@@ -4,6 +4,9 @@
 #include "food.h"
 #include "snake.h"
 
+void Reset(Snake &snake, Food &food);
+bool CheckCollision(Snake &snake);
+
 int main()
 {
     std::cout << "Starting the game...\n";
@@ -29,9 +32,24 @@ int main()
         snake.Grow();
         snake.Draw();
 
+        // Check for colision
+        if (CheckCollision(snake))
+            Reset(snake, food);
+
         EndDrawing();
     }
 
     CloseWindow();
     return 0;
+}
+
+bool CheckCollision(Snake &snake)
+{
+    return (snake.GetHead().x >= cellCount) || (snake.GetHead().y >= cellCount) || (snake.GetHead().x <= 0) || (snake.GetHead().y <= 0);
+}
+
+void Reset(Snake &snake, Food &food)
+{
+    snake.Reset();
+    food.GetNewPosition();
 }

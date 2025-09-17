@@ -12,6 +12,11 @@ Food::Food()
     UnloadImage(image);
 }
 
+Food::~Food()
+{
+    UnloadTexture(texture);
+}
+
 void Food::Draw()
 {
     DrawTexture(texture, position.x * cellSize, position.y * cellSize, WHITE);

@@ -67,3 +67,15 @@ bool Snake::Eat(Vector2 foodPos)
 
     return false;
 }
+
+Vector2 Snake::GetHead()
+{
+    return bodies[0];
+}
+
+void Snake::Reset()
+{
+    bodies = {Vector2{6, 9}};
+    direction = Right;
+    frameCounter = 0;
+}

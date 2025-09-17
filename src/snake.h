@@ -10,6 +10,8 @@ public:
     void Draw();
     bool Eat(Vector2 foodPos);
     void Grow();
+    Vector2 GetHead();
+    void Reset();
 
 private:
     std::deque<Vector2> bodies;
