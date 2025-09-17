@@ -8,8 +8,8 @@ typedef enum
 } GameScreen;
 
 // Screen colors and dimensions
-inline constexpr Color green = {173, 204, 96, 255};
-inline constexpr Color darkGreen = {43, 51, 24, 255};
+inline constexpr Color screenColor = {105, 105, 105, 255};
+inline constexpr Color textColor = {128, 0, 0, 255};
 inline constexpr int cellSize = 30;
 inline constexpr int cellCount = 25;
 inline constexpr int heightScreen = 18;

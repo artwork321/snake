@@ -28,22 +28,22 @@ int main()
             }
 
             // Drawing
-            ClearBackground(green);
-            DrawRectangleLinesEx(Rectangle{cellSize, cellSize, cellSize * (cellCount - 2), cellSize * heightScreen}, 4, darkGreen);
+            ClearBackground(screenColor);
+            DrawRectangleLinesEx(Rectangle{cellSize, cellSize, cellSize * (cellCount - 2), cellSize * heightScreen}, 4, textColor);
             game.Draw();
-            DrawText("Retro Snake", cellSize, heightScreen * (cellSize + 2), 40, darkGreen);
-            DrawText(TextFormat("Score: %i", game.GetScore()), cellSize, heightScreen * (cellSize + 5), 30, darkGreen);
+            DrawText("Retro Snake", cellSize, heightScreen * (cellSize + 2), 40, textColor);
+            DrawText(TextFormat("Score: %i", game.GetScore()), cellSize, heightScreen * (cellSize + 5), 30, textColor);
             EndDrawing();
             break;
         case (GAME_OVER): // End Game Screen
             BeginDrawing();
-            ClearBackground(green);
+            ClearBackground(screenColor);
 
             // Display Text
             DrawText("Game Over!", GetScreenWidth() / 2 - MeasureText("Game Over!", 50) / 2,
-                     GetScreenHeight() / 2 - 100, 50, darkGreen);
+                     GetScreenHeight() / 2 - 100, 50, textColor);
             DrawText("Press Enter to Restart", GetScreenWidth() / 2 - MeasureText("Press Enter to Restart", 20) / 2,
-                     GetScreenHeight() / 2 - 20 / 2, 20, darkGreen);
+                     GetScreenHeight() / 2 - 20 / 2, 20, textColor);
 
             // Process Input
             if (IsKeyPressed(KEY_ENTER))
